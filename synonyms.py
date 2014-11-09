@@ -143,7 +143,7 @@ semantic_descriptor = {
 def most_similar_word(word, choices, semantic_descriptors):
     max_similarity = 0
     for choice in choices:
-        similarity = calculating_similarity(word, choice)
+        similarity = calculating_similarity(word, choice, semantic_descriptors)
         if similarity > max_similarity:
             max_similarity = similarity
             closest = choice

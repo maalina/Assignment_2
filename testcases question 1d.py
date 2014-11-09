@@ -14,11 +14,11 @@ semantic_descriptor = {
 
 
 #normal case 
-assert most_similar_word('target', ['bad']) == 'bad'
+assert most_similar_word('target', ['bad'], semantic_descriptor) == 'bad'
 assert most_similar_word('target', ['similar', 'bad', 'completelydifferent'], semantic_descriptor) == 'similar'
 assert most_similar_word('target', ['closebutnotquite', 'bad', 'completelydifferent'],
                          semantic_descriptor) == 'closebutnotquite'
-assert most_similar_word('target', ['alsoclose', 'zero', 'similar']) == 'similar'
+assert most_similar_word('target', ['alsoclose', 'zero', 'similar'], semantic_descriptor) == 'similar'
 
 #edge case: ties
 assert most_similar_word('target', ['alsosimilar', 'zero', 'closebutnotquite', 'similar'],
