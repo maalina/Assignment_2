@@ -67,21 +67,27 @@ def build_semantic_descriptors(sentences):
                         (typically the output of get_sentence_lists or get_sentence_lists_from_files)
     :return:    a dictionary with each word that appears in sentences as keys. The value is another dictionary with words as keys and values as the number of times the first and second keys appear in the same sentence
     """
-
     dictionary_count = {}
 
+    #Remove duplicates
+    for i in range (len(sentences)):
+        sentences[i] = set(sentences[i])    # Sets are like dictionaries without values. They cannot have duplicates and you can quickly check whether something is in it
+
+    #Prepare the resultant dictionary
     for sentence in sentences:  # looking at one sentence/list
-        for word in sentence:  #looking at each word in the sentence/list
+        for word in sentence:  # looking at each word in the sentence/list
             if word not in dictionary_count:
                 dictionary_count[word] = {}
+
+    #Populate the resultant dictionary
     for word in dictionary_count:  # each new/inserted word in the dict
         for sentence in sentences:  #looking at one sentence/list
-            for new_word in sentence:  #looking at each word in the sentence
-                if (new_word != word) and (new_word not in dictionary_count[
-                    word]):  #not sure about first past since new_word is a word and word is a dictionary, but make sure we're comparing words, not using the same ones...?
-                    word[new_word] = 1
-                elif new_word in dictionary_count[word]:
-                    word[new_word] += 1
+            if word in sentence:
+                for new_word in sentence:  #looking at each word in the sentence
+                    if (new_word != word) and (new_word not in dictionary_count[word]):  #not sure about first past since new_word is a word and word is a dictionary, but make sure we're comparing words, not using the same ones...?
+                        dictionary_count[word][new_word] = 1
+                    elif new_word in dictionary_count[word]:
+                        dictionary_count[word][new_word] += 1
     return dictionary_count
 
 

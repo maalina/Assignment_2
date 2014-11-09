@@ -2,18 +2,11 @@
 
 from synonyms import build_semantic_descriptors
 
-print (build_semantic_descriptors(
-[['hello', 'jack'],
-['jack', 'is', 'good'],
-['jack', 'is', 'not', 'bad'],
-['jack', 'is', 'very', 'very', 'good', 'in', 'fact']]))
-
 assert (build_semantic_descriptors(
 [['hello', 'jack'],
 ['jack', 'is', 'good'],
 ['jack', 'is', 'not', 'bad'], 
-['jack', 'is', 'very', 'very', 'good', 'in', 'fact']]) == 
-
+['jack', 'is', 'very', 'very', 'good', 'in', 'fact']]) ==
 {'jack': {'in': 1, 'not': 1, 'hello': 1, 'bad': 1, 'fact': 1, 'very': 1, 'is': 3, 'good': 2}, 
 'in': {'jack': 1, 'fact': 1, 'very': 1, 'is': 1, 'good': 1}, 
 'not': {'bad': 1, 'jack': 1, 'is': 1}, 'hello': {'jack': 1}, 
