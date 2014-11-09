@@ -76,16 +76,12 @@ def build_semantic_descriptors(sentences):
                 dictionary_count[word] = {}
     print (dictionary_count)
     for word in dictionary_count:  #looking at each new/inserted word in the dict
-        print (word)
         for sentence in sentences:  #looking at one sentence/list
-            print(sentence)
             copy_sentence = []
             for checking_word in sentence:
                 if checking_word not in copy_sentence:
                     copy_sentence.append(checking_word)
              #now every copy_sentence has unique words
-            print(sentence)
-            print(copy_sentence)
             if word not in copy_sentence:
                 for new_word in copy_sentence:
                     if new_word in dictionary_count[word]:
@@ -95,27 +91,39 @@ def build_semantic_descriptors(sentences):
                     print (new_word)
                     if (new_word != word) and (new_word not in dictionary_count[word]): #create a new dict for it, appears so 1
                         dictionary_count[word][new_word] = 1
-                        print(dictionary_count)
                     elif new_word in dictionary_count[word]: #updates existing dict, adds 1, since it appears
                         dictionary_count[word][new_word] += 1
-                        print(dictionary_count)
     return dictionary_count
+
+semantic_descriptor = {
+    'target': {'word1': 7, 'word2': 6, 'word3': 4},
+    'similar': {'word1': 10, 'word2': 5, 'word10': 8, 'word11': 3, 'word12': 1, 'word15': 1},
+    # degree of similarity: 100 / sqrt(200)
+    'bad': {'word1': 5, 'word3': 4},  # degree of similarity: 35+16=51 / sqrt(39)
+    'completelydifferent': {'word10': 4, 'word16': 4, 'word5': 1},  # similarity: 0
+    'zero': {},  # similarity: 0
+    'closebutnotquite': {'word1': 7, 'word2': 5, 'word3': 5, 'word10': 10},  # degree of similarity: 99 / sqrt(199)
+    'alsoclose': {'word1': 4, 'word2': 6, 'word3': 9, 'word15': 9},  # degree of similarity: 100 / sqrt(214)
+    'alsosimilar': {'word2': 10, 'word3': 10}}  # degree of similarity: 100 / sqrt(200)
 
 
 def calculating_similarity(word, choice, semantic_descriptor):
     word_dictionary = semantic_descriptor[word]
     choice_dictionary = semantic_descriptor[choice]
+    if choice_dictionary == {}:
+        similarity = 0.0
+        return similarity
     top = 0
     bottom1 = 0
     bottom2 = 0
-    for i in word_dictionary:
-        for j in choice_dictionary:
-            if i == j:
-                top += i[0] * j[0]
-    for i in word_dictionary:
-        bottom1 += i[0] ** 2
-    for j in choice_dictionary:
-        bottom2 += j[0] ** 2
+    for first_word, first_number in word_dictionary.items():
+        for second_word, second_number in choice_dictionary.items():
+            if first_word == second_word:
+                top += first_number * second_number
+    for bottom_word1, bottom_number1 in word_dictionary.items():
+        bottom1 += bottom_number1 ** 2
+    for bottom_word2, bottom_number2 in choice_dictionary.items():
+        bottom2 += bottom_number2 ** 2
     bottom = (bottom1 * bottom2) ** 0.5
     similarity = top / bottom
     return similarity #returns the cosine similarity value between 2 words, word and choice
@@ -129,24 +137,46 @@ the data in semantic_descriptors. If the semantic similarity between two words c
 is considered to be −1. In case of a tie between several elements in choices, the one with the smallest index
 in choices should be returned (e.g., if there is a tie between choices[5] and choices[7], choices [7] is returned'''
 
-semantic_descriptor = {
-    'target': {'word1': 7, 'word2': 6, 'word3': 4},
-    'similar': {'word1': 10, 'word2': 5, 'word10': 8, 'word11': 3, 'word12': 1, 'word15': 1},
-    # degree of similarity: 100 / sqrt(200)
-    'bad': {'word1': 5, 'word3': 4},  # degree of similarity: 35+16=51 / sqrt(39)
-    'completelydifferent': {'word10': 4, 'word16': 4, 'word5': 1},  # similarity: 0
-    'zero': {},  # similarity: 0
-    'closebutnotquite': {'word1': 7, 'word2': 5, 'word3': 5, 'word10': 10},  # degree of similarity: 99 / sqrt(199)
-    'alsoclose': {'word1': 4, 'word2': 6, 'word3': 9, 'word15': 9},  # degree of similarity: 100 / sqrt(214)
-    'alsosimilar': {'word2': 10, 'word3': 10}}  # degr
-
 def most_similar_word(word, choices, semantic_descriptors):
-    max_similarity = 0
+    max_similarity = 0.0
     for choice in choices:
+        option = choice
         similarity = calculating_similarity(word, choice, semantic_descriptors)
         if similarity > max_similarity:
             max_similarity = similarity
-            closest = choice
-    print(closest)
-    return(closest)
+            closest = option
+    return (closest) #for the error cases, why is closest referenced before assignment as a local var
 
+'''Part (e) run_similarity_test(filename, semantic_descriptors)
+This function takes in a string filename which is a file in the same format as test.txt, and returns the
+percentage of questions on which most_similar_word() guesses the answer correctly using the semantic
+descriptors stored in semantic_descriptors.
+The format of test.txt is as follows. On each line, we are given a word (all-lowercase), the correct
+answer, and the choices. For example, the line:
+feline cat dog cat horse
+represents the question:
+feline:
+(a) cat
+(b) dog
+(c) horse
+and indicates that the correct answer is “cat”.'''
+
+def run_similarity_test(filename, semantic_descriptors):
+    total_runs = 0
+    correct = 0
+    text = open(filename).read().split()
+
+    for first, second, third, fourth in text: #looking at the first word
+        choices = []
+        choices.extend(second, third, fourth)
+        answer_1 = most_similar_word(first, choices, semantic_descriptors)
+
+#how do i get the real answer 2 to check now...?
+
+        if answer_1 == answer_2:
+            total_runs += 1
+            correct += 1
+        else:
+            total_runs +=1
+
+    return (correct/total_runs * 100)
