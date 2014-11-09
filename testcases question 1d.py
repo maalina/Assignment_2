@@ -1,5 +1,5 @@
 #Run 1d test cases
-from synonyms import semantic_descriptor
+from synonyms import semantic_descriptor, most_similar_word
 
 semantic_descriptor = {
     'target': {'word1': 7, 'word2': 6, 'word3': 4},
