@@ -133,6 +133,12 @@ is considered to be −1. In case of a tie between several elements in choices, 
 in choices should be returned (e.g., if there is a tie between choices[5] and choices[7], choices [7] is returned'''
 
 def most_similar_word(word, choices, semantic_descriptors):
+    """
+    From the words in choices, returns the most similar one to word, given the dictionary semantic_descriptors
+    :param word: a single word, the original question word we are finding a most similar word to
+    :param choices: a list of words, from which we find the most similar word to word
+    :param semantic_descriptors: a dictionary of semantic descriptors of words found in that document
+    """
     max_similarity = -2.0
     for choice in choices:
         option = choice
@@ -157,6 +163,11 @@ feline:
 and indicates that the correct answer is “cat”.'''
 
 def run_similarity_test(filename, semantic_descriptors):
+    """
+    Returns the percentage that most_similar_word guessed the most similar word correctly, based on the semantic descriptors
+    :param filename: the name of a file, which contains the questions, 1st word as the question word, 2nd word as the correct answer, and the 3rd and 4th word as word options
+    :param semantic_descriptors: a semantic descriptor build based on an external document text
+    """
     total_runs = 0
     correct = 0
     text = open(filename).read().split()
