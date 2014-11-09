@@ -95,23 +95,18 @@ def build_semantic_descriptors(sentences):
                         dictionary_count[word][new_word] += 1
     return dictionary_count
 
-semantic_descriptor = {
-    'target': {'word1': 7, 'word2': 6, 'word3': 4},
-    'similar': {'word1': 10, 'word2': 5, 'word10': 8, 'word11': 3, 'word12': 1, 'word15': 1},
-    # degree of similarity: 100 / sqrt(200)
-    'bad': {'word1': 5, 'word3': 4},  # degree of similarity: 35+16=51 / sqrt(39)
-    'completelydifferent': {'word10': 4, 'word16': 4, 'word5': 1},  # similarity: 0
-    'zero': {},  # similarity: 0
-    'closebutnotquite': {'word1': 7, 'word2': 5, 'word3': 5, 'word10': 10},  # degree of similarity: 99 / sqrt(199)
-    'alsoclose': {'word1': 4, 'word2': 6, 'word3': 9, 'word15': 9},  # degree of similarity: 100 / sqrt(214)
-    'alsosimilar': {'word2': 10, 'word3': 10}}  # degree of similarity: 100 / sqrt(200)
-
-
 def calculating_similarity(word, choice, semantic_descriptor):
+
+    """
+    Returns the cosine similarity between two words, word and choice by looking through their dictionaries in semantic_descriptor
+    :param word: a single word, the original question-word
+    :param choice: a single word, one of the answer options given
+    :param semantic_descriptor: a dictionary of semantic descriptors of words found in that document
+    """
     word_dictionary = semantic_descriptor[word]
     choice_dictionary = semantic_descriptor[choice]
     if choice_dictionary == {}:
-        similarity = -2.0
+        similarity = -1.0
         return similarity
     top = 0
     bottom1 = 0
@@ -138,7 +133,7 @@ is considered to be −1. In case of a tie between several elements in choices, 
 in choices should be returned (e.g., if there is a tie between choices[5] and choices[7], choices [7] is returned'''
 
 def most_similar_word(word, choices, semantic_descriptors):
-    max_similarity = 0.0
+    max_similarity = -2.0
     for choice in choices:
         option = choice
         similarity = calculating_similarity(word, choice, semantic_descriptors)
