@@ -111,7 +111,7 @@ def calculating_similarity(word, choice, semantic_descriptor):
     word_dictionary = semantic_descriptor[word]
     choice_dictionary = semantic_descriptor[choice]
     if choice_dictionary == {}:
-        similarity = 0.0
+        similarity = -2.0
         return similarity
     top = 0
     bottom1 = 0
@@ -145,8 +145,6 @@ def most_similar_word(word, choices, semantic_descriptors):
         if similarity > max_similarity:
             max_similarity = similarity
             closest = option
-        elif similarity == 0 and max_similarity == 0:
-            closest = choice
     return (closest) #for the error cases, why is closest referenced before assignment as a local var
 
 '''Part (e) run_similarity_test(filename, semantic_descriptors)
