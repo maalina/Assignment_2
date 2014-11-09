@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c65f4593-f440-4e2b-96b6-2ace5cc75c90" name="Default" comment="Added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Assignment 2.iml" afterPath="$PROJECT_DIR$/.idea/Assignment 2.iml" />
-    </list>
+    <list default="true" id="c65f4593-f440-4e2b-96b6-2ace5cc75c90" name="Default" comment="" />
     <ignored path="Assignment 2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -371,7 +368,11 @@
       <created>1415550788712</created>
       <updated>1415550788712</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ignore this.">
+      <created>1415550846575</created>
+      <updated>1415550846575</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -416,7 +417,8 @@
     </option>
     <MESSAGE value="Added test cases for question 1c and 1d." />
     <MESSAGE value="Fixed test cases for 1d." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed test cases for 1d." />
+    <MESSAGE value="Ignore this." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore this." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
