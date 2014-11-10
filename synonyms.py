@@ -1,8 +1,5 @@
 # encoding=utf-8
 
-the_prince = open("text.txt", encoding="utf-8").read()
-
-
 def get_sentence_lists(text):
     """
     Breaks a string into sentences, which are broken into words.
@@ -41,7 +38,7 @@ def get_text(filename):
     :param filename:    a string containing the name of a file relative to the current directory
     :return:    the contents of the file as a single string.
     """
-    text = open(filename).read()
+    text = open(filename, encoding="utf8").read()
     return text
 
 
@@ -74,7 +71,6 @@ def build_semantic_descriptors(sentences):
         for word in sentence:  #looking at each word in the sentence/list
             if word not in dictionary_count:
                 dictionary_count[word] = {}
-    print (dictionary_count)
     for word in dictionary_count:  #looking at each new/inserted word in the dict
         for sentence in sentences:  #looking at one sentence/list
             copy_sentence = []
@@ -88,7 +84,6 @@ def build_semantic_descriptors(sentences):
                         dictionary_count[word][new_word] += 0 #does not update dict for it, since it does not appear, so 0
             else:
                 for new_word in copy_sentence:  #looking at each word in the sentence
-                    print (new_word)
                     if (new_word != word) and (new_word not in dictionary_count[word]): #create a new dict for it, appears so 1
                         dictionary_count[word][new_word] = 1
                     elif new_word in dictionary_count[word]: #updates existing dict, adds 1, since it appears
@@ -170,7 +165,7 @@ def run_similarity_test(filename, semantic_descriptors):
     """
     total_runs = 0
     correct = 0
-    text = open(filename).read().split()
+    text = open(filename, encoding="utf8").read().split()
 
     for first, second, third, fourth in text: #looking at the first four word
         choices = []
@@ -184,3 +179,12 @@ def run_similarity_test(filename, semantic_descriptors):
             total_runs +=1
 
     return (correct/total_runs * 100)
+
+def testing_everything():
+
+    sentences = get_sentence_lists_from_files(["Warandpeace.txt", "Swansway.txt"])
+    descriptors = build_semantic_descriptors(sentences)
+    percentage = run_similarity_test("test.txt", descriptors)
+    return percentage
+
+print(testing_everything())
