@@ -67,23 +67,16 @@ def build_semantic_descriptors(sentences):
 
     dictionary_count = {}
 
+    sentences = [set(s) for s in sentences]  # convert all sentences to a set.
+
     for sentence in sentences:  # looking at one sentence/list
         for word in sentence:  #looking at each word in the sentence/list
             if word not in dictionary_count:
                 dictionary_count[word] = {}
     for word in dictionary_count:  #looking at each new/inserted word in the dict
         for sentence in sentences:  #looking at one sentence/list
-            copy_sentence = []
-            for checking_word in sentence:
-                if checking_word not in copy_sentence:
-                    copy_sentence.append(checking_word)
-             #now every copy_sentence has unique words
-            if word not in copy_sentence:
-                for new_word in copy_sentence:
-                    if new_word in dictionary_count[word]:
-                        dictionary_count[word][new_word] += 0 #does not update dict for it, since it does not appear, so 0
-            else:
-                for new_word in copy_sentence:  #looking at each word in the sentence
+            if word in sentence:
+                for new_word in sentence:  #looking at each word in the sentence
                     if (new_word != word) and (new_word not in dictionary_count[word]): #create a new dict for it, appears so 1
                         dictionary_count[word][new_word] = 1
                     elif new_word in dictionary_count[word]: #updates existing dict, adds 1, since it appears
@@ -91,13 +84,15 @@ def build_semantic_descriptors(sentences):
     return dictionary_count
 
 def calculating_similarity(word, choice, semantic_descriptor):
-
     """
-    Returns the cosine similarity between two words, word and choice by looking through their dictionaries in semantic_descriptor
+    Return the cosine similarity between two words, word and choice by looking through their dictionaries in semantic_descriptor
     :param word: a single word, the original question-word
     :param choice: a single word, one of the answer options given
     :param semantic_descriptor: a dictionary of semantic descriptors of words found in that document
     """
+    if word not in semantic_descriptor or choice not in semantic_descriptor:
+        return -1
+
     word_dictionary = semantic_descriptor[word]
     choice_dictionary = semantic_descriptor[choice]
     if choice_dictionary == {}:
@@ -116,20 +111,12 @@ def calculating_similarity(word, choice, semantic_descriptor):
         bottom2 += bottom_number2 ** 2
     bottom = (bottom1 * bottom2) ** 0.5
     similarity = top / bottom
-    return similarity #returns the cosine similarity value between 2 words, word and choice
-
-
-'''Part (d) most_similar_word(word, choices, semantic_descriptors)
-This function takes in a string word, a list of strings choices, and a dictionary semantic_descriptors
-which is built according to the requirements for build_semantic_descriptors, and returns the element
-of choices which has the largest semantic similarity to word, with the semantic similarity computed using
-the data in semantic_descriptors. If the semantic similarity between two words cannot be computed, it
-is considered to be −1. In case of a tie between several elements in choices, the one with the smallest index
-in choices should be returned (e.g., if there is a tie between choices[5] and choices[7], choices [7] is returned'''
+    return similarity  # returns the cosine similarity value between 2 words, word and choice
 
 def most_similar_word(word, choices, semantic_descriptors):
     """
-    From the words in choices, returns the most similar one to word, given the dictionary semantic_descriptors
+    From the words in choices, return the most similar one to word, given the dictionary semantic_descriptors
+
     :param word: a single word, the original question word we are finding a most similar word to
     :param choices: a list of words, from which we find the most similar word to word
     :param semantic_descriptors: a dictionary of semantic descriptors of words found in that document
@@ -141,50 +128,35 @@ def most_similar_word(word, choices, semantic_descriptors):
         if similarity > max_similarity:
             max_similarity = similarity
             closest = option
-    return (closest) #for the error cases, why is closest referenced before assignment as a local var
-
-'''Part (e) run_similarity_test(filename, semantic_descriptors)
-This function takes in a string filename which is a file in the same format as test.txt, and returns the
-percentage of questions on which most_similar_word() guesses the answer correctly using the semantic
-descriptors stored in semantic_descriptors.
-The format of test.txt is as follows. On each line, we are given a word (all-lowercase), the correct
-answer, and the choices. For example, the line:
-feline cat dog cat horse
-represents the question:
-feline:
-(a) cat
-(b) dog
-(c) horse
-and indicates that the correct answer is “cat”.'''
+    return closest #for the error cases, why is closest referenced before assignment as a local var
 
 def run_similarity_test(filename, semantic_descriptors):
     """
-    Returns the percentage that most_similar_word guessed the most similar word correctly, based on the semantic descriptors
+    Return the percentage that most_similar_word guessed the most similar word correctly, based on the semantic descriptors
     :param filename: the name of a file, which contains the questions, 1st word as the question word, 2nd word as the correct answer, and the 3rd and 4th word as word options
     :param semantic_descriptors: a semantic descriptor build based on an external document text
     """
     total_runs = 0
     correct = 0
-    text = open(filename, encoding="utf8").read().split()
+    text = open(filename, encoding="utf8")
 
-    for first, second, third, fourth in text: #looking at the first four word
-        choices = []
-        choices.extend(third, fourth)
-        answer_1 = most_similar_word(first, choices, semantic_descriptors)
-        answer_2 = second
-        if answer_1 == answer_2:
+    for line in text:  # looking at the first four words
+        first, second, third, fourth = line.split()
+        choices = [third, fourth]
+        if most_similar_word(first, choices, semantic_descriptors) == second:
             total_runs += 1
             correct += 1
         else:
             total_runs +=1
-
-    return (correct/total_runs * 100)
+    return correct / total_runs * 100
 
 def testing_everything():
-
     sentences = get_sentence_lists_from_files(["Warandpeace.txt", "Swansway.txt"])
+    print ("got files")
     descriptors = build_semantic_descriptors(sentences)
+    print ('descriptors built')
     percentage = run_similarity_test("test.txt", descriptors)
+    print ("similarity test run")
     return percentage
 
 print(testing_everything())
