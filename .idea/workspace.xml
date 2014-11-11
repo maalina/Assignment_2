@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b16f13-e496-4d52-aee3-7a6caec1ee61" name="Default" comment="Made calculating similarity work: result: 72.5">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MOVED" beforePath="C:\UofT\2014-15\CSC180\Assignment_2\Assignment_2\Swansway.txt" afterPath="$PROJECT_DIR$/Swannsway.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Assignment 2.iml" afterPath="$PROJECT_DIR$/.idea/Assignment 2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/synonyms.py" afterPath="$PROJECT_DIR$/synonyms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testcases question 1b file2.txt" afterPath="$PROJECT_DIR$/testcases question 1b file2.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Assignment 2.iws" />
@@ -22,8 +18,9 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Assignment 2$testcases.coverage" NAME="testcases Coverage Results" MODIFIED="1415669827620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Assignment 2$testcases_question_1b.coverage" NAME="testcases question 1b Coverage Results" MODIFIED="1415667752360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Assignment 2$synonyms.coverage" NAME="synonyms Coverage Results" MODIFIED="1415667596727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Assignment 2$synonyms.coverage" NAME="synonyms Coverage Results" MODIFIED="1415669847952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Assignment 2$testcases_question_1c.coverage" NAME="testcases question 1c Coverage Results" MODIFIED="1415576497940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -41,8 +38,8 @@
       <file leaf-file-name="synonyms.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/synonyms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2543641" vertical-offset="3570" max-vertical-offset="5780">
-              <caret line="216" column="53" selection-start-line="216" selection-start-column="53" selection-end-line="216" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.109725684" vertical-offset="5396" max-vertical-offset="5814">
+              <caret line="320" column="38" selection-start-line="320" selection-start-column="38" selection-end-line="320" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -72,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/testcases question 1b file2.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-              <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
+              <caret line="0" column="45" selection-start-line="0" selection-start-column="45" selection-end-line="0" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -103,9 +100,10 @@
       <list>
         <option value="$PROJECT_DIR$/testcases uqestion 1e.py" />
         <option value="$PROJECT_DIR$/testcases question 1e.py" />
-        <option value="$PROJECT_DIR$/synonyms.py" />
         <option value="$PROJECT_DIR$/testcases question 1b file2.txt" />
         <option value="$PROJECT_DIR$/testcases question 1b.py" />
+        <option value="$PROJECT_DIR$/testcases.py" />
+        <option value="$PROJECT_DIR$/synonyms.py" />
       </list>
     </option>
   </component>
@@ -179,7 +177,12 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.testcases question 1b">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\UofT\2014-15\CSC180\Assignment_2\Assignment_2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.synonyms">
     <configuration default="false" name="testcases question 1c" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -234,6 +237,25 @@
       <module name="Assignment 2" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcases question 1b.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testcases" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Assignment 2" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcases.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -389,16 +411,18 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.testcases question 1c" />
       <item index="1" class="java.lang.String" itemvalue="Python.synonyms" />
       <item index="2" class="java.lang.String" itemvalue="Python.testcases question 1b" />
+      <item index="3" class="java.lang.String" itemvalue="Python.testcases" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.testcases question 1b" />
-        <item index="1" class="java.lang.String" itemvalue="Python.synonyms" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testcases question 1c" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.synonyms" />
+        <item index="1" class="java.lang.String" itemvalue="Python.testcases" />
+        <item index="2" class="java.lang.String" itemvalue="Python.testcases question 1b" />
+        <item index="3" class="java.lang.String" itemvalue="Python.testcases question 1c" />
       </list>
     </recent_temporary>
   </component>
@@ -572,10 +596,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcases question 1b file2.txt">
+    <entry file="file://$PROJECT_DIR$/testcases question 1b.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="401">
-          <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="5" column="112" selection-start-line="5" selection-start-column="112" selection-end-line="5" selection-end-column="112" />
           <folding />
         </state>
       </provider>
@@ -588,18 +612,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcases question 1b.py">
+    <entry file="file://$PROJECT_DIR$/testcases question 1b file2.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="5" column="112" selection-start-line="5" selection-start-column="112" selection-end-line="5" selection-end-column="112" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="45" selection-start-line="0" selection-start-column="45" selection-end-line="0" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/synonyms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2543641" vertical-offset="3570" max-vertical-offset="5780">
-          <caret line="216" column="53" selection-start-line="216" selection-start-column="53" selection-end-line="216" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.109725684" vertical-offset="5396" max-vertical-offset="5814">
+          <caret line="320" column="38" selection-start-line="320" selection-start-column="38" selection-end-line="320" selection-end-column="38" />
           <folding />
         </state>
       </provider>

@@ -14,6 +14,7 @@ def get_sentence_lists(text):
     if text == "":
         return [[]]
 
+    import string
     res = []
     blank = []  # accumulates the list corresponding to the current sentence.
     cur_word = ""
@@ -21,7 +22,7 @@ def get_sentence_lists(text):
     # Split text along every character
     for ch in text + ".":  # ensure that our sentence always has a trailing
         # period
-        if ch in ",-:;()\"\' \t\n":  # if we hit a word break
+        if ch in ",-:;()\"\' \t\n" + string.whitespace:  # if we hit a word break
             if cur_word != "":
                 blank.append(cur_word.lower())
             cur_word = ""
@@ -333,3 +334,4 @@ if __name__ == '__main__':
     assert most_similar_word('target', ['zero'], semantic_descriptor) == 'zero'
     assert most_similar_word('target', ['completelydifferent', 'zero'],
                              semantic_descriptor) == 'completelydifferent'
+    print("Question D tested successfully")
