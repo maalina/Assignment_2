@@ -7,6 +7,9 @@
         <Python>
           <option name="ALIGN_MULTILINE_IMPORTS" value="false" />
         </Python>
+        <XML>
+          <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+        </XML>
         <codeStyleSettings language="Python">
           <option name="KEEP_LINE_BREAKS" value="false" />
           <option name="WRAP_LONG_LINES" value="true" />

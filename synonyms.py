@@ -1,12 +1,13 @@
 # encoding=utf-8
 # CSC 180 Assignment 2
 # Christopher Chu, Alina Ma
-# Result for question 1e: 72.5% correct once the algorithm was trained was
-# Swann's Way.
+# Result for question 1e: 72.5% correct once the algorithm was trained on
+# War and Peace and Swann's Way (available from Project Gutenburg)
 
 def get_sentence_lists(text):
     """
     Break a string into sentences, which are broken into words.
+
     :param text:    The string to be broken up
     :return:    A list of lists of strings. The second level of lists
     corresponds to the sentences.
@@ -44,6 +45,7 @@ def get_sentence_lists(text):
 def get_text(filename):
     """
     Return the text contained in the file filename as a string.
+
     :param filename:    a string containing the name of a file relative to
     the current directory
     :return:    the contents of the file as a single string.
@@ -56,6 +58,7 @@ def get_sentence_lists_from_files(filenames):
     """
     Question 1b. Combine the text from each of the files into a list of
     lists in the same format as question 1a.
+
     :param filenames:   The filenames (relative to the current directory) as
     string
     :return:    a list of list of strings, where the lists group together the
@@ -111,6 +114,7 @@ def calculating_similarity(word, choice, semantic_descriptor):
     """
     Return the cosine similarity between two words, word and choice by
     looking through their dictionaries in semantic_descriptor
+
     :param word: a single word, the original question-word
     :param choice: a single word, one of the answer options given
     :param semantic_descriptor: a dictionary of semantic descriptors of words
@@ -196,6 +200,7 @@ def testing_everything():
     """
     Test question 1e, i.e. how well the algorithm performs against a synonym
     questions given the corpora Warandpeace.txt and Swannsway.txt
+
     :return: as a float what percentage of the tests the algorithm got right
     """
     sentences = get_sentence_lists_from_files(
@@ -214,7 +219,7 @@ def testing_everything():
 
 
 if __name__ == '__main__':
-    # ## QUESTION B ###
+    # ## QUESTION A ###
     assert get_sentence_lists(
         "Hello, Jack. How is it going? Not bad; pretty good, actually... Very "
         "very good, in fact.") == [['hello', 'jack'],
@@ -244,15 +249,15 @@ if __name__ == '__main__':
 
     # ## QUESTION B ###
     assert get_sentence_lists_from_files(
-        ["testcases question 1b file.txt"]) == [['hello', 'jack'],
+        ["testcases_question_1b_file.txt"]) == [['hello', 'jack'],
                                                 ['how', 'is', 'it', 'going'],
                                                 ['not', 'bad', 'pretty', 'good',
                                                  'actually'],
                                                 ['very', 'very', 'good', 'in',
                                                  'fact']]
 
-    assert get_sentence_lists_from_files(["testcases question 1b file2.txt",
-                                          "testcases question 1b file.txt"]) \
+    assert get_sentence_lists_from_files(["testcases_question_1b_file2.txt",
+                                          "testcases_question_1b_file.txt"]) \
            == [
                ['including', 'exclamation', 'marks', 'would', 'be',
                 'intelligent'], ['what', 'about', 'quotes'], ['hello', 'jack'],
@@ -312,7 +317,7 @@ if __name__ == '__main__':
                                            'word3': 10}}  # degree of
     # similarity: 100 / sqrt(200) = 7.07
 
-
+    ### QUESTION D ###
     #normal cases
     assert most_similar_word('target', ['bad'], semantic_descriptor) == 'bad'
     assert most_similar_word('target',
