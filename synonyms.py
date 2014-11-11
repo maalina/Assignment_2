@@ -15,6 +15,7 @@ def get_sentence_lists(text):
         return [[]]
 
     import string
+
     res = []
     blank = []  # accumulates the list corresponding to the current sentence.
     cur_word = ""
@@ -22,7 +23,8 @@ def get_sentence_lists(text):
     # Split text along every character
     for ch in text + ".":  # ensure that our sentence always has a trailing
         # period
-        if ch in ",-:;()\"\' \t\n" + string.whitespace:  # if we hit a word break
+        if ch in ",-:;()\"\' \t\n" + string.whitespace:  # if we hit a word
+        # break
             if cur_word != "":
                 blank.append(cur_word.lower())
             cur_word = ""
@@ -240,7 +242,7 @@ if __name__ == '__main__':
     assert get_sentence_lists("") == [[]]
     print("Question A tested successfully")
 
-    ### QUESTION B ###
+    # ## QUESTION B ###
     assert get_sentence_lists_from_files(
         ["testcases question 1b file.txt"]) == [['hello', 'jack'],
                                                 ['how', 'is', 'it', 'going'],
@@ -264,16 +266,16 @@ if __name__ == '__main__':
         [['hello', 'jack'], ['jack', 'is', 'good'],
          ['jack', 'is', 'not', 'bad'],
          ['jack', 'is', 'very', 'very', 'good', 'in', 'fact']]) == {
-            'jack': {'in': 1, 'not': 1, 'hello': 1, 'bad': 1, 'fact': 1,
-                     'very': 1, 'is': 3, 'good': 2},
-            'in': {'jack': 1, 'fact': 1, 'very': 1, 'is': 1, 'good': 1},
-            'not': {'bad': 1, 'jack': 1, 'is': 1}, 'hello': {'jack': 1},
-            'bad': {'jack': 1, 'is': 1, 'not': 1},
-            'fact': {'jack': 1, 'in': 1, 'very': 1, 'is': 1, 'good': 1},
-            'very': {'jack': 1, 'in': 1, 'fact': 1, 'is': 1, 'good': 1},
-            'is': {'jack': 3, 'in': 1, 'not': 1, 'bad': 1, 'fact': 1, 'very': 1,
-                   'good': 2},
-            'good': {'jack': 2, 'in': 1, 'fact': 1, 'very': 1, 'is': 2}})
+                'jack': {'in': 1, 'not': 1, 'hello': 1, 'bad': 1, 'fact': 1,
+                         'very': 1, 'is': 3, 'good': 2},
+                'in': {'jack': 1, 'fact': 1, 'very': 1, 'is': 1, 'good': 1},
+                'not': {'bad': 1, 'jack': 1, 'is': 1}, 'hello': {'jack': 1},
+                'bad': {'jack': 1, 'is': 1, 'not': 1},
+                'fact': {'jack': 1, 'in': 1, 'very': 1, 'is': 1, 'good': 1},
+                'very': {'jack': 1, 'in': 1, 'fact': 1, 'is': 1, 'good': 1},
+                'is': {'jack': 3, 'in': 1, 'not': 1, 'bad': 1, 'fact': 1,
+                       'very': 1, 'good': 2},
+                'good': {'jack': 2, 'in': 1, 'fact': 1, 'very': 1, 'is': 2}})
 
     i_am_a_sick_man_sentence = build_semantic_descriptors(
         [['i', 'am', 'a', 'sick', 'man'], ['i', 'am', 'a', 'spiteful', 'man'],
@@ -308,7 +310,7 @@ if __name__ == '__main__':
                            # degree of similarity: 100 / sqrt(214) = 6.84
                            'alsosimilar': {'word2': 10,
                                            'word3': 10}}  # degree of
-                                           # similarity: 100 / sqrt(200) = 7.07
+    # similarity: 100 / sqrt(200) = 7.07
 
 
     #normal cases
@@ -335,3 +337,6 @@ if __name__ == '__main__':
     assert most_similar_word('target', ['completelydifferent', 'zero'],
                              semantic_descriptor) == 'completelydifferent'
     print("Question D tested successfully")
+
+    # Question e uses the different functions together, so it is our
+    # integrated test.
